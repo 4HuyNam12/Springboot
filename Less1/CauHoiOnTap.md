@@ -16,7 +16,7 @@ hình qua maven, như khai báo các dependency, version của dự án, tên d�
 Câu 5 :Trong file pom.xml có các thẻ dependency. Ý nghĩa của chúng là gì? Trả Lời :dùng để khai báo thư viện với các
 thông tin bao gồm tên thư viện và version của thư viện
 
-Câu 6 :Ý nghĩa của @Controllerlà gì? 
+Câu 6 :Ý nghĩa của @Controllerlà gì?
 Trả lời : gắn cho các Bean tiếp nhận các thông tin request từ phía người dùng và chuyển các yêu cầu này xuống cho tầng Service xử lý
 
 Câu 7 :Ý nghĩa của @RequestMapping là gì? Nó có những tham số gì ngoài value? @RequestMapping Có nhiệm vụ ánh xạ các
@@ -28,14 +28,13 @@ Câu 8 :Ý nghĩa của @RequestBody khi đặt trong hàm hứng request để 
 giá trị mà người dùng gửi lên server mà các giá trị đó được chứa trong phần thân (body) của request
 Câu 9: Hãy trả lời khi nào thì dùng @PathVariable và khi nào nên dùng @RequestParam
 Trả lời : @RequestParam được sử dụng để truy cập (lấy) giá trị của parameters trên URL(kiểu query string).
-            @PathVariable được sử dụng để lấy giá trị trên URI theo template (còn gọi là URI template).
-
+@PathVariable được sử dụng để lấy giá trị trên URI theo template (còn gọi là URI template).
 
 Câu 10:Thứ tự các thành phần đường dẫn @PathVariable có thể hoán đổi được không?
 Trả lời : không.
 
 Câu 11 :@GetMapping khác gì so với @PostMapping?
-Trả lời :  @PostMapping có nhiệm vụ đánh dấu hàm xử lý POST request trong Controller,@GetMapping có nhiệm vụ đánh dấu hàm xử lý GET request trong controller
+Trả lời : @PostMapping có nhiệm vụ đánh dấu hàm xử lý POST request trong Controller,@GetMapping có nhiệm vụ đánh dấu hàm xử lý GET request trong controller
 @PostMapping cần nhập phần body , @GetMapping không nhập được phần body
 
 Câu 12 :Trong các annotation @RequestMapping, @GetMapping, @PostMapping… có tham số produces = MediaType.XXXX ý nghĩa
@@ -48,5 +47,4 @@ Trả lời : Spring chuyển chuỗi JSON trong requestbody thành obj Message
 
 Câu 14 :Cổng mặc định ứng dụng SpringBoot là 8080. Hãy google cách để thay đổi cổng lắng nghe mặc định.
 Trả lời : điều
-chỉnh giá trị server.port trong application.properties(vd :server.port =8081) hay application.yml(vd:server: port :
-8081)
+chỉnh giá trị server.port trong application.properties(vd :server.port =8081) hay application.yml(vd:server: port : 8081)
