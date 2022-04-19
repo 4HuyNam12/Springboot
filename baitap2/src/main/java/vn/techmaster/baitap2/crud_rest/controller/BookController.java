@@ -19,14 +19,14 @@ public class BookController {
         books.put("OX-14", new Book("OX-14", "Chi Dau", "Nam Cao", 1943));
     }
 
-    //    @GetMapping
-//    public List<Book> getBooks() {
-//        return books.values().stream().toList();
-//    }
-    @GetMapping
-    public ConcurrentHashMap<String, Book> getBooks() {
-        return books;
+        @GetMapping
+    public List<Book> getBooks() {
+        return books.values().stream().toList();
     }
+//    @GetMapping
+//    public ConcurrentHashMap<String, Book> getBooks() {
+//        return books;
+//    }
 
     @PostMapping
     public Book createNewBook(@RequestBody BookRequest bookRequest) {
@@ -34,5 +34,22 @@ public class BookController {
         Book newBook = new Book(uuid, bookRequest.title(), bookRequest.author(), bookRequest.year());
         books.put(uuid, newBook);
         return newBook;
+    }
+    @GetMapping("/{id}")
+    public Book getABook(@PathVariable(value = "id") String id) {
+        return books.get(id);
+    }
+    @PutMapping("/{id}")
+    public  Book updateBook(@PathVariable(value = "id") String id ,@RequestBody BookRequest bookRequest) {
+        Book newBook = new Book(id,bookRequest.title(),bookRequest.author
+                (),bookRequest.year());
+        books.replace(id,newBook);
+        return newBook;
+    }
+    @DeleteMapping("/{id}")
+    public  Book deleteBook(@PathVariable(value = "id") String id) {
+        Book deletedBook = books.get(id);
+        books.remove(id);
+        return deletedBook;
     }
 }
