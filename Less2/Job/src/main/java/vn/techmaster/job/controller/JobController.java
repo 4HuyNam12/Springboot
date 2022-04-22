@@ -5,10 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.techmaster.job.dto.JobRequest;
+import vn.techmaster.job.enums.Location;
 import vn.techmaster.job.exception.ErrorResponse;
 import vn.techmaster.job.exception.NotFoundException;
 import vn.techmaster.job.model.Job;
-import vn.techmaster.job.model.Location;
 import vn.techmaster.job.service.JobService;
 
 import java.util.List;
