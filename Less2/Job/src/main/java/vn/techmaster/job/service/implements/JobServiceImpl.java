@@ -6,7 +6,10 @@ import vn.techmaster.job.exception.NotFoundException;
 import vn.techmaster.job.model.Job;
 import vn.techmaster.job.model.Location;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -111,8 +114,8 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<Job> getJobByTitleDescriptionAndLocation(Location location,String keyword) {
-        List<Job> result =jobs.stream()
+    public List<Job> getJobByTitleDescriptionAndLocation(Location location, String keyword) {
+        List<Job> result = jobs.stream()
                 .filter(job -> job.getLocation().equals(location))
                 .filter(job -> job.getTitle().toLowerCase().contains(keyword.toLowerCase()) || job.getDescription().toLowerCase().contains(keyword.toLowerCase()))
                 .collect(Collectors.toList());
