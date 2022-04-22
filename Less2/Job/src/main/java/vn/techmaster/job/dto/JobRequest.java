@@ -3,7 +3,8 @@ package vn.techmaster.job.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import vn.techmaster.job.model.Location;
+import vn.techmaster.job.enums.Location;
+
 
 @Data
 @NoArgsConstructor
