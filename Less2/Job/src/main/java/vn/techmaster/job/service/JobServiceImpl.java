@@ -61,12 +61,12 @@ public class JobServiceImpl implements JobService {
         String uuid = UUID.randomUUID().toString();
         Job newJob = new Job();
         newJob.setId(uuid);
-        newJob.setTitle(jobRequest.title());
-        newJob.setDescription(jobRequest.description());
-        newJob.setLocation(jobRequest.location());
-        newJob.setMinSalary(jobRequest.minSalary());
-        newJob.setMaxSalary(jobRequest.maxSalary());
-        newJob.setEmailTo(jobRequest.emailTo());
+        newJob.setTitle(jobRequest.getTitle());
+        newJob.setDescription(jobRequest.getDescription());
+        newJob.setLocation(jobRequest.getLocation());
+        newJob.setMinSalary(jobRequest.getMinSalary());
+        newJob.setMaxSalary(jobRequest.getMaxSalary());
+        newJob.setEmailTo(jobRequest.getEmailTo());
         jobs.add(newJob);
         return newJob;
     }
@@ -75,12 +75,12 @@ public class JobServiceImpl implements JobService {
     public Job updateJob(String id, JobRequest jobRequest) {
         for (Job job : jobs) {
             if (job.getId().equals(id)) {
-                job.setTitle(jobRequest.title());
-                job.setDescription(jobRequest.description());
-                job.setLocation(jobRequest.location());
-                job.setMaxSalary(jobRequest.minSalary());
-                job.setMaxSalary(jobRequest.maxSalary());
-                job.setEmailTo(jobRequest.emailTo());
+                job.setTitle(jobRequest.getTitle());
+                job.setDescription(jobRequest.getDescription());
+                job.setLocation(jobRequest.getLocation());
+                job.setMaxSalary(jobRequest.getMinSalary());
+                job.setMaxSalary(jobRequest.getMaxSalary());
+                job.setEmailTo(jobRequest.getEmailTo());
                 return job;
             }
         }
