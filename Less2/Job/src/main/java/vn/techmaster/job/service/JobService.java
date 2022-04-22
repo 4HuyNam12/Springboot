@@ -2,8 +2,9 @@ package vn.techmaster.job.service;
 
 import org.springframework.stereotype.Service;
 import vn.techmaster.job.dto.JobRequest;
+import vn.techmaster.job.enums.Location;
 import vn.techmaster.job.model.Job;
-import vn.techmaster.job.model.Location;
+
 
 import java.util.List;
 

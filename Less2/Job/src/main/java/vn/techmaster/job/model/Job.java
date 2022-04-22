@@ -1,14 +1,11 @@
 package vn.techmaster.job.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import vn.techmaster.job.enums.Location;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class Job {
     private String id;
     private String title;
