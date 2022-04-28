@@ -1,30 +1,30 @@
 package vn.techmaster.job.service;
 
 import org.springframework.stereotype.Service;
-import vn.techmaster.job.dto.JobRequest;
 import vn.techmaster.job.enums.Location;
-import vn.techmaster.job.model.Job;
-
+import vn.techmaster.job.model.dto.JobDto;
+import vn.techmaster.job.model.request.CreateJobRequest;
+import vn.techmaster.job.model.request.UpdateJobRequest;
 
 import java.util.List;
 
 @Service
 public interface JobService {
-    List<Job> getAllJob();
+    List<JobDto> getAllJob();
 
-    Job getJobById(String id);
+    JobDto getJobById(String id);
 
-    List<Job> getAllJobSortByLocation();
+    List<JobDto> getAllJobSortByLocation();
 
-    List<Job> getJobBySalary(int salary);
+    List<JobDto> getJobBySalary(int salary);
 
-    Job createNewJob(JobRequest jobRequest);
+    JobDto createNewJob(CreateJobRequest createJobRequest);
 
-    Job updateJob(String id, JobRequest JobRequest);
+    JobDto updateJob(String id, UpdateJobRequest UpdateJobRequest);
 
-    Job deleteJob(String id);
+    JobDto deleteJob(String id);
 
-    List<Job> getJobByTitleAndDescription(String keyword);
+    List<JobDto> getJobByTitleAndDescription(String keyword);
 
-    List<Job> getJobByTitleDescriptionAndLocation(Location location, String keywordDescription);
+    List<JobDto> getJobByTitleDescriptionAndLocation(Location location, String keywordDescription);
 }
