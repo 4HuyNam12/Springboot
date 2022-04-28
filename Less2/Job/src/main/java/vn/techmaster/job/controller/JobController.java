@@ -4,13 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.techmaster.job.dto.JobRequest;
 import vn.techmaster.job.enums.Location;
 import vn.techmaster.job.exception.ErrorResponse;
 import vn.techmaster.job.exception.NotFoundException;
-import vn.techmaster.job.model.Job;
+import vn.techmaster.job.model.dto.JobDto;
+import vn.techmaster.job.model.request.CreateJobRequest;
+import vn.techmaster.job.model.request.UpdateJobRequest;
 import vn.techmaster.job.service.JobService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static vn.techmaster.job.exception.Message.*;
@@ -24,7 +26,7 @@ public class JobController {
     @GetMapping
     public ResponseEntity<?> getAllJob() {
         try {
-            List<Job> listJob = jobService.getAllJob();
+            List<JobDto> listJob = jobService.getAllJob();
             return ResponseEntity.ok(listJob);
         } catch (NotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(listNoJob);
@@ -34,7 +36,7 @@ public class JobController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getJobById(@PathVariable("id") String id) {
         try {
-            Job job = jobService.getJobById(id);
+            JobDto job = jobService.getJobById(id);
             return ResponseEntity.ok(job);
         } catch (NotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(HttpStatus.NOT_FOUND, jobWithID + id + " not found"));
@@ -45,7 +47,7 @@ public class JobController {
     @GetMapping("/sortbylocation")
     public ResponseEntity<?> getAllJobSortByLocation() {
         try {
-            List<Job> listJobSortByLocation = jobService.getAllJobSortByLocation();
+            List<JobDto> listJobSortByLocation = jobService.getAllJobSortByLocation();
             return ResponseEntity.status(HttpStatus.OK).body(listJobSortByLocation);
         } catch (NotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(listNoJob);
@@ -55,7 +57,7 @@ public class JobController {
     @GetMapping("/salary/{salary}")
     public ResponseEntity<?> getJobBySalary(@PathVariable(value = "salary") int salary) {
         try {
-            List<Job> listJobBySalary = jobService.getJobBySalary(salary);
+            List<JobDto> listJobBySalary = jobService.getJobBySalary(salary);
             return ResponseEntity.status(HttpStatus.OK).body(listJobBySalary);
         } catch (NotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no job in the salary range");
@@ -63,16 +65,16 @@ public class JobController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createNewJob(@RequestBody JobRequest jobRequest) {
-        Job newJob = jobService.createNewJob(jobRequest);
+    public ResponseEntity<?> createNewJob(@RequestBody @Valid CreateJobRequest createJobRequest) {
+        JobDto newJob = jobService.createNewJob(createJobRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(newJob);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateJob(@PathVariable("id") String id, @RequestBody JobRequest jobRequest) {
+    public ResponseEntity<?> updateJob(@PathVariable("id") String id, @RequestBody @Valid UpdateJobRequest UpdateJobRequest) {
         try {
-            Job job = jobService.updateJob(id, jobRequest);
-            return ResponseEntity.status(HttpStatus.OK).body(job);
+            JobDto jobDto = jobService.updateJob(id, UpdateJobRequest);
+            return ResponseEntity.status(HttpStatus.OK).body(jobDto);
         } catch (NotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(jobWithID + id + " not found");
         }
@@ -81,8 +83,8 @@ public class JobController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteJob(@PathVariable("id") String id) {
         try {
-            Job deleteJob = jobService.deleteJob(id);
-            return ResponseEntity.status(HttpStatus.OK).body(deleteJob);
+            JobDto deletedJob = jobService.deleteJob(id);
+            return ResponseEntity.status(HttpStatus.OK).body(deletedJob);
         } catch (NotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(jobWithID + id + " not found");
         }
@@ -91,7 +93,7 @@ public class JobController {
     @GetMapping("/keyword/{keyword}")
     public ResponseEntity<?> getJobByTitleAndDescription(@PathVariable("keyword") String keyword) {
         try {
-            List<Job> listJobByTitleAndDescription = jobService.getJobByTitleAndDescription(keyword);
+            List<JobDto> listJobByTitleAndDescription = jobService.getJobByTitleAndDescription(keyword);
             return ResponseEntity.status(HttpStatus.OK).body(listJobByTitleAndDescription);
         } catch (NotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No job contains " + keyword + " in title and description");
@@ -101,7 +103,7 @@ public class JobController {
     @GetMapping("/query")
     public ResponseEntity<?> getJobByTitleDescriptionAndLocation(@RequestParam(name = "location") Location location, @RequestParam(name = "keyword") String keyword) {
         try {
-            List<Job> listJobByTitleAndDescription = jobService.getJobByTitleDescriptionAndLocation(location, keyword);
+            List<JobDto> listJobByTitleAndDescription = jobService.getJobByTitleDescriptionAndLocation(location, keyword);
             return ResponseEntity.status(HttpStatus.OK).body(listJobByTitleAndDescription);
         } catch (NotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFoundJobMessage);
