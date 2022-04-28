@@ -13,6 +13,8 @@ import vn.techmaster.job.service.JobService;
 
 import java.util.List;
 
+import static vn.techmaster.job.exception.Message.*;
+
 @RestController
 @RequestMapping("/jobs")
 public class JobController {
@@ -25,7 +27,7 @@ public class JobController {
             List<Job> listJob = jobService.getAllJob();
             return ResponseEntity.ok(listJob);
         } catch (NotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No job at all");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(listNoJob);
         }
     }
 
@@ -35,7 +37,7 @@ public class JobController {
             Job job = jobService.getJobById(id);
             return ResponseEntity.ok(job);
         } catch (NotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(HttpStatus.NOT_FOUND, "Job with id: " +id + " not found"));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(HttpStatus.NOT_FOUND, jobWithID + id + " not found"));
         }
     }
 
@@ -46,7 +48,7 @@ public class JobController {
             List<Job> listJobSortByLocation = jobService.getAllJobSortByLocation();
             return ResponseEntity.status(HttpStatus.OK).body(listJobSortByLocation);
         } catch (NotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No job at all");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(listNoJob);
         }
     }
 
@@ -72,7 +74,7 @@ public class JobController {
             Job job = jobService.updateJob(id, jobRequest);
             return ResponseEntity.status(HttpStatus.OK).body(job);
         } catch (NotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Job with id: " +id + " not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(jobWithID + id + " not found");
         }
     }
 
@@ -82,7 +84,7 @@ public class JobController {
             Job deleteJob = jobService.deleteJob(id);
             return ResponseEntity.status(HttpStatus.OK).body(deleteJob);
         } catch (NotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Job with id: " +id + " not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(jobWithID + id + " not found");
         }
     }
 
@@ -102,7 +104,7 @@ public class JobController {
             List<Job> listJobByTitleAndDescription = jobService.getJobByTitleDescriptionAndLocation(location, keyword);
             return ResponseEntity.status(HttpStatus.OK).body(listJobByTitleAndDescription);
         } catch (NotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No job found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFoundJobMessage);
         }
     }
 }

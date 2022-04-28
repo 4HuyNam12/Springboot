@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static vn.techmaster.job.exception.Message.listNoJob;
+import static vn.techmaster.job.exception.Message.notFoundJobMessage;
+
 
 @Component
 public class JobServiceImpl implements JobService {
@@ -31,7 +34,7 @@ public class JobServiceImpl implements JobService {
         if (!jobs.isEmpty()) {
             return jobs;
         }
-        throw new NotFoundException("No Job, lets add");
+        throw new NotFoundException(listNoJob);
     }
 
     @Override
@@ -41,7 +44,7 @@ public class JobServiceImpl implements JobService {
                 return job;
             }
         }
-        throw new NotFoundException("Job not found");
+        throw new NotFoundException(notFoundJobMessage);
     }
 
     @Override
@@ -49,7 +52,7 @@ public class JobServiceImpl implements JobService {
         if (!jobs.isEmpty()) {
             return jobs.stream().sorted(Comparator.comparing(Job::getLocation)).collect(Collectors.toList());
         }
-        throw new NotFoundException("No Job, lets add");
+        throw new NotFoundException(listNoJob);
     }
 
     @Override
@@ -57,7 +60,7 @@ public class JobServiceImpl implements JobService {
         if (!jobs.isEmpty()) {
             return jobs.stream().filter(job -> job.getMinSalary() <= salary).filter(job -> job.getMaxSalary() >= salary).collect(Collectors.toList());
         }
-        throw new NotFoundException("No Job, lets add");
+        throw new NotFoundException(notFoundJobMessage);
     }
 
     @Override
@@ -88,7 +91,7 @@ public class JobServiceImpl implements JobService {
                 return job;
             }
         }
-        throw new NotFoundException("Job not found");
+        throw new NotFoundException(notFoundJobMessage);
     }
 
     @Override
@@ -99,7 +102,7 @@ public class JobServiceImpl implements JobService {
                 return job;
             }
         }
-        throw new NotFoundException("Job not found");
+        throw new NotFoundException(notFoundJobMessage);
     }
 
     @Override
@@ -110,7 +113,7 @@ public class JobServiceImpl implements JobService {
         if (!result.isEmpty()) {
             return result;
         }
-        throw new NotFoundException("No Job, lets add");
+        throw new NotFoundException(listNoJob);
 
     }
 
@@ -123,6 +126,6 @@ public class JobServiceImpl implements JobService {
         if (!result.isEmpty()) {
             return result;
         }
-        throw new NotFoundException("No Job, lets add");
+        throw new NotFoundException(notFoundJobMessage);
     }
 }
