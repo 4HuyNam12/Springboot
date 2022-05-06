@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm nhà tuyển dụng thành công</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<h2 align="center" class="m-2">Register Success</h2>
+<div class="container">
+    <div class="row justify-content-center m-5">
+        <div class="col-6">
+            <table class="table">
+                <tr>
+                    <td><strong>ID:</strong></td>
+                    <td><span th:text="${employerReq.id}"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Employer's name:</strong></td>
+                    <td><span th:text="${employerReq.name}"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Address:</strong></td>
+                    <td><span th:text="${employerReq.address}"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Phone:</strong></td>
+                    <td><span th:text="${employerReq.phone}"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row justify-content-center m-1">
+        <div class="col-6">
+            <span><a th:href="@{/index}">Home</a></span>
+            <span><a th:href="@{/employers}">Danh sách nhà tuyển dụng</a></span>
+            <span><a th:href="@{/employer_registration_form}">Thêm nhà tuyển dụng</a></span>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

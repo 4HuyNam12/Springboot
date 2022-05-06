@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Trang chủ</title>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center m-5">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Nhà Tuyển Dụng</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a th:href="@{/employer_registration_form}">Thêm nhà tuyển dụng</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a th:href="@{/employers}">Danh sách nhà tuyển dụng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-5">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Việc Làm</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a th:href="@{/job_registration_form}">Tạo việc làm</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a th:href="@{/jobs}">Danh sách việc làm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-5">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Ứng Viên</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a href="">Thêm ứng viên</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a href="">Danh sách ứng viên</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
