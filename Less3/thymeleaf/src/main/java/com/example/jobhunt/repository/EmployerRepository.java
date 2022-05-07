@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class EmployerRepository {
-    private static ConcurrentHashMap<String, Employer> employers = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<String, Employer> employers = new ConcurrentHashMap<>();
 
     static {
         employers.put("1", new Employer("1", "TechMaster", "Hà Nội", "0123456789"));

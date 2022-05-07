@@ -19,12 +19,12 @@ public class EmployerController {
     public String getAllEmployer(Model model) {
         List<Employer> employers = employerRepository.getListOfEmployers();
             model.addAttribute("employers",employers);
-        return "employers";
+        return "/employer/employers";
     }
     @GetMapping("/employer_registration_form")
     public String showEmployerRegistrationForm(Model model) {
         model.addAttribute("employerReq", new Employer());
-        return "employer_registration_form";
+        return "/employer/employer_registration_form";
     }
     @PostMapping("/save_employer")
     public String createNewEmployer( EmployerRequest req,Model model) {
@@ -32,7 +32,7 @@ public class EmployerController {
         Employer employer = new Employer(randomUUID,req.getName(),req.getAddress(),req.getPhone());
         employerRepository.addEmployer(employer);
         model.addAttribute("employerReq",employer);
-        return "employer_display_form";
+        return "/employer/employer_display_form";
     }
 
 }
