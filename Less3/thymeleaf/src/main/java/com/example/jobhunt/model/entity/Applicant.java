@@ -1,4 +1,4 @@
-package com.example.jobhunt.model;
+package com.example.jobhunt.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,11 +7,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Employer {
+@NoArgsConstructor
+public class Applicant {
     private String id;
     private String name;
+    private int age;
     private String address;
-    private String phone;
+    private String skills;
 }

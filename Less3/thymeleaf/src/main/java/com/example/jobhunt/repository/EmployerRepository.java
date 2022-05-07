@@ -1,6 +1,6 @@
 package com.example.jobhunt.repository;
 
-import com.example.jobhunt.model.Employer;
+import com.example.jobhunt.model.entity.Employer;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

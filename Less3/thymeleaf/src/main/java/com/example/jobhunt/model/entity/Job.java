@@ -1,4 +1,4 @@
-package com.example.jobhunt.model;
+package com.example.jobhunt.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

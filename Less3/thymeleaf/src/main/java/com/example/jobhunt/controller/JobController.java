@@ -1,6 +1,6 @@
 package com.example.jobhunt.controller;
 
-import com.example.jobhunt.model.Job;
+import com.example.jobhunt.model.entity.Job;
 import com.example.jobhunt.model.request.JobRequest;
 import com.example.jobhunt.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
