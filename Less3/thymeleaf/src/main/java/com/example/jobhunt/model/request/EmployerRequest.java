@@ -13,15 +13,14 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployerRequest {
-    @NotNull
-    @NotEmpty
+
+    @NotEmpty(message = "Employer's name cannot be empty")
     private String name;
 
-    @NotNull
-    @NotEmpty
+
+    @NotNull(message = "Employer's address cannot be null")
     private String address;
 
-    @NotNull
-    @NotEmpty
+    @NotEmpty(message = "Employer's phone cannot be empty")
     private String phone;
 }

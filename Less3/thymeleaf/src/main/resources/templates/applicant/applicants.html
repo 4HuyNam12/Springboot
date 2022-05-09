@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Danh sách ứng viên</title>
+<head th:replace="template.html :: header(Applicants)">
 </head>
 
 <body>
+<div th:insert="template.html :: topmenu"></div>
 <div>
     <header>
-        <h1 align="center" class ="m-3">List Applicants</h1>
+        <h1 align="center" class="m-3" th:text="#{applicants}"></h1>
     </header>
 </div>
 <div class="container">
@@ -21,10 +17,10 @@
             <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Applicant's name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Address</th>
-                <th scope="col">Skill</th>
+                <th scope="col" th:text="#{name}"></th>
+                <th scope="col" th:text="#{age}"></th>
+                <th scope="col" th:text="#{address}"></th>
+                <th scope="col" th:text="#{skills}"></th>
             </tr>
             </thead>
             <tbody>
@@ -37,12 +33,6 @@
             </tr>
             </tbody>
         </table>
-    </div>
-    <div class="row justify-content-center m-1">
-        <div class="col-3">
-            <span><a th:href="@{/index}">Home</a></span>
-            <span><a th:href="@{/applicant_registration_form}">Thêm ứng viên</a></span>
-        </div>
     </div>
 </div>
 
