@@ -23,7 +23,7 @@
 <img src="https://user-images.githubusercontent.com/91261960/167423139-61c6a118-957f-4984-8761-ee028556188f.png" alt="" width="750">
 
 ### Form thêm ứng viên
-<img src="https://user-images.githubusercontent.com/91261960/167423155-b06b0ae2-42a2-459b-a068-82d3886c7f15.png)" alt="" width="750">
+<img src="https://user-images.githubusercontent.com/91261960/167423155-b06b0ae2-42a2-459b-a068-82d3886c7f15.png" alt="" width="750">
 
 ### Thêm thành công ứng viên
 <img src="https://user-images.githubusercontent.com/91261960/167423159-2ce40200-6b1a-40a6-85a0-c995d3042bf4.png" alt="" width="750">
