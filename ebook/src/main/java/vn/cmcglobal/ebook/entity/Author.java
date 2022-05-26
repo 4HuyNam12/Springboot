@@ -1,4 +1,4 @@
-package vn.cmcglobal.ebook.model.entity;
+package vn.cmcglobal.ebook.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,13 +15,14 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Publisher {
+public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private int yearOfBirth;
+    private String description;
     private String website;
-    private String founder;
-    private String foundedYear;
-    private String address;
+    private String organization;
 }

@@ -1,4 +1,4 @@
-package vn.cmcglobal.ebook.model.entity;
+package vn.cmcglobal.ebook.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,11 +15,13 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDetails {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long orderId;
-    private long ebookId;
-    private int quantity;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
+    private String address;
 }

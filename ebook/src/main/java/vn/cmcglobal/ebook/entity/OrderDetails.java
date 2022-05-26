@@ -1,4 +1,4 @@
-package vn.cmcglobal.ebook.model.entity;
+package vn.cmcglobal.ebook.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,19 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Author {
+@AllArgsConstructor
+public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String firstName;
-    private String lastName;
-    private int yearOfBirth;
-    private String description;
-    private String website;
-    private String organization;
+    private long orderId;
+    private long ebookId;
+    private int quantity;
 }
