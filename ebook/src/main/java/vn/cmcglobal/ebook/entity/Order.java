@@ -8,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name="order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +16,7 @@ public class Order {
     @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
     private Date createdDate = new Date();
-    @OneToMany(mappedBy = "order")
-    List<OrderDetail> orderDetails;
+    @OneToOne()
+    @JoinColumn(name = "orderdetail_id")
+    OrderDetail orderDetails;
 }
