@@ -21,4 +21,5 @@ public class Person {
     private String job;
     private boolean gender;
     private String birthDay;
+
 }

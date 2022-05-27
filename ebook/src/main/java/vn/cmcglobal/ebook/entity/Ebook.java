@@ -19,14 +19,15 @@ import java.util.Date;
 public class Ebook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String title;
     private String isbn;
-    private long authorId;
-    private long publisherId;
+    private String description;
+    private Long authorId;
+    private Long publisherId;
     private Date publishedDate;
-    private int pages;
-    private long price;
-    private int quantity;
+    private Integer pages;
+    private Long price;
+    private Integer quantity;
     private boolean deleted;
 }
