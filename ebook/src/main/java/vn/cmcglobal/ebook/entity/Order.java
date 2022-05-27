@@ -1,25 +1,22 @@
 package vn.cmcglobal.ebook.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
+@Table(name="order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long customerId;
-    private Date createdDate;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "create_date")
+    private Date createdDate = new Date();
+    @OneToMany(mappedBy = "order")
+    List<OrderDetail> orderDetails;
 }

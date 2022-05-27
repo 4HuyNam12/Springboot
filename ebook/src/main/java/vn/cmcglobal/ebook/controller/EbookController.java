@@ -17,7 +17,7 @@ public class EbookController {
     private EbookService ebookService;
 
     @GetMapping
-    public ResponseEntity<?> getListUser() {
+    public ResponseEntity<?> getListEbooks() {
         List<Ebook> result = ebookService.getListEbook();
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
