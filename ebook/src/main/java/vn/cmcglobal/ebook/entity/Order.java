@@ -1,5 +1,6 @@
 package vn.cmcglobal.ebook.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,11 +13,16 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private long customerId;
-    @Temporal(TemporalType.DATE)
-    @Column(name = "create_date")
-    private Date createdDate = new Date();
-    @OneToMany(mappedBy = "order")
-    List<OrderDetail> orderDetails;
+    private Long id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @Column
+    private Date createdDate;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnoreProperties(value = "order")
+    private List<OrderDetail> orderDetails;
 }

@@ -19,14 +19,14 @@ public class BookMapper {
     public BookDto toBookReduce(Ebook ebook) {
         BookDto bookDto = new BookDto();
         bookDto.setTitle(ebook.getTitle());
-        Optional<Author> rs = authorRepository.findById(ebook.getAuthorId());
+        Optional<Author> rs = authorRepository.findById(ebook.getAuthor().getId());
         String authorName ="";
         String publishName="";
         if (rs.isPresent()) {
             authorName = rs.get().getFirstName() + rs.get().getLastName();
         }
         bookDto.setAuthorName(authorName);
-        Optional<Publisher> pb = publisherRepository.findById(ebook.getPublisherId());
+        Optional<Publisher> pb = publisherRepository.findById(ebook.getPublisher().getId());
         if(pb.isPresent())
             publishName =pb.get().getName();
         bookDto.setPublishName(publishName);

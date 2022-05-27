@@ -1,28 +1,38 @@
 package vn.cmcglobal.ebook.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Entity
+@Table(name="authors")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
+    @Column
     private String firstName;
+
+    @Column
     private String lastName;
-    private int yearOfBirth;
+
+    @Column
+    private Integer yearOfBirth;
+
+    @Column
     private String description;
+
+    @Column
     private String website;
+
+    @Column
     private String organization;
+
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnoreProperties(value = "author")
+    private List<Ebook> ebooks;
 }
