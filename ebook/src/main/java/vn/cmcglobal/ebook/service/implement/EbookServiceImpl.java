@@ -32,7 +32,7 @@ public class EbookServiceImpl implements EbookService {
         if (ebookOptional.isPresent()) {
             Ebook result = ebookOptional.get();
             result.setQuantity(result.getQuantity() + 1);
-            result.setAuthorId(ebook.getAuthorId());
+            result.setAuthor(ebook.getAuthor());
             result.setDeleted(ebook.isDeleted());
             result.setPages(ebook.getPages());
             result.setPrice(ebook.getPrice());

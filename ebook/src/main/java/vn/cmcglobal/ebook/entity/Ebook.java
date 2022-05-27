@@ -1,5 +1,6 @@
 package vn.cmcglobal.ebook.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.NaturalId;
 
@@ -15,21 +16,41 @@ public class Ebook implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String title;
 
-    @NaturalId
     private String isbn;
-    private String description;
-    private Long authorId;
-    private Long publisherId;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "published_date")
+    @Column
+    private String description;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
+    @JsonIgnoreProperties(value = "ebooks")
+    private Author author;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "publisher_id")
+    @JsonIgnoreProperties(value = "ebooks")
+    private Publisher publisher;
+
+    @Column
     private Date publishedDate;
+
+    @Column
     private Integer pages;
+
+    @Column
     private Long price;
+
+    @Column
     private Integer quantity;
+
+    @Column
     private boolean deleted;
-    @OneToMany(mappedBy ="ebook" )
-    List<OrderDetail> orderDetails;
+
+    @OneToOne(mappedBy = "ebook", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = "ebook")
+    private OrderDetail orderDetail;
 }
